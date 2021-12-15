@@ -9,3 +9,6 @@ services:
     restart: always
     devices:
       - "/dev/ttyUSB0:/dev/mobile"
+    environment:
+      - PIN=
+      - WEBHOOK_URL=https://chat.example.com/hooks/39kk37ZWK4EMzYNdJ/6kSS3FzmEL26zXdQ7manNNHczNYh4cZfuJnzwM4rdNeoHyNd

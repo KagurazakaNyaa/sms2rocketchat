@@ -9,5 +9,6 @@ WORKDIR /app
 ADD main.py /app/main.py
 
 ENV WEBHOOK_URL=
+ENV PIN=
 
 ENTRYPOINT [ "python", "/app/main.py" ]
