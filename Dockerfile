@@ -1,4 +1,4 @@
-FROM python:3-slim
+FROM python:3-slim-buster
 
 RUN apt-get update && apt-get install -y libgammu-dev && apt-get clean
 RUN pip install -U requests python-gammu
