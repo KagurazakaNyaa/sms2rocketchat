@@ -1,0 +1,7 @@
+# Configuration file for Gammu SMS Daemon
+
+# Gammu library configuration, see gammurc(5)
+[gammu]
+# Please configure this!
+port = /dev/mobile
+connection = at

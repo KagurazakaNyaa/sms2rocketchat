@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  server:
+    image: kagurazakanyaa/sms2rocketchat
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    devices:
+      - "/dev/ttyUSB0:/dev/mobile"
