@@ -1,7 +1,7 @@
 FROM python:3-slim-buster
 
-RUN apt-get update && apt-get install -y libgammu-dev && apt-get clean
-RUN pip install -U requests python-gammu
+RUN apt-get update && apt-get install -y libgammu-dev build-essential && apt-get clean
+RUN pip install -U pip && pip install -U requests python-gammu
 
 ADD gammu-smsdrc /etc/gammu-smsdrc
 
