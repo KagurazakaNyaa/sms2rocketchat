@@ -52,13 +52,16 @@ def loop_sms_receive():
                 logging.error(f'ERROR: Unable to delete SMS: {e}')
         elif sms[0]['UDH']['AllParts'] != -1:
             if len(sms) == sms[0]['UDH']['AllParts']:
-                decoded_sms = gammu.DecodeSMS(sms)
-                message = {"datetime": str(
-                    sms[0]['DateTime']), "number": sms[0]['Number'], "text": decoded_sms['Entries'][0]['Buffer']}
-                payload = json.dumps(message, ensure_ascii=False)
-                logging.info(payload)
-                send_message(sms[0]['Number'],
-                             decoded_sms['Entries'][0]['Buffer'])
+                try:
+                    decoded_sms = gammu.DecodeSMS(sms)
+                    message = {"datetime": str(
+                        sms[0]['DateTime']), "number": sms[0]['Number'], "text": decoded_sms['Entries'][0]['Buffer']}
+                    payload = json.dumps(message, ensure_ascii=False)
+                    logging.info(payload)
+                    send_message(sms[0]['Number'],
+                                 decoded_sms['Entries'][0]['Buffer'])
+                except UnicodeDecodeError as e:
+                    print(e)
                 for part in sms:
                     gammu_sm.DeleteSMS(Folder=0, Location=part['Location'])
             else:
